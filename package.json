@@ -1,0 +1,19 @@
+{
+  "name": "ttsbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Takosheen/TTSbot.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Takosheen/TTSbot/issues"
+  },
+  "homepage": "https://github.com/Takosheen/TTSbot#readme"
+}
