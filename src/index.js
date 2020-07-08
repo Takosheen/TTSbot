@@ -22,9 +22,9 @@ client.on("channelCreate", (channel) => { //method looks for channel
         var collector = sentmessage.createReactionCollector(filter)
         
         collector.on('collect', (reaction, user) => {
-            // Possibly make this into a switch statement, maybe later
+            // Possibly make this into a switch statement, maybe late
             if(reaction.emoji.name === '🙂')
-               
+               console.log('post-if statement')
         })
         sentmessage.react('🙂'); // reaction to message for role
         //add emojis for other reactions
