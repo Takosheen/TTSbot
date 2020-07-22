@@ -20,11 +20,6 @@ client.on("channelCreate", (channel) => { //method looks for channel
         }
 
         //console.log(channel.members);
-        let Roles =  await message.guild.roles.fetch()
-        Roles.cache.forEach(Role => console.log(Role.name + ' ' + Role.id));
-        const allowedRoles = ['TEST ROLE'];
-        const array = Roles.cache.filter(role => allowedRoles.includes(role.name))
-        console.log(array)
 
         var collector = sentmessage.createReactionCollector(filter)
 
@@ -34,10 +29,15 @@ client.on("channelCreate", (channel) => { //method looks for channel
         collector.on('collect', async (reaction, user) => {
             // Possibly make this into a switch statement, maybe late
             if(reaction.emoji.name === '🙂') {
-                 
-                 await channel.overwritePermissions([
+                let roles =  await message.guild.roles.fetch()
+                roles.cache.forEach(Role => console.log(Role.name + ' ' + Role.id));
+                const allowedRoles = ['TEST ROLE'];
+                const rolemap = roles.cache.filter(role => allowedRoles.includes(role.name))
+                console.log(rolemap.get('733066904582881300'))
+
+                 await message.channel.overwritePermissions([
                      {
-                        id: '104320577',
+                        id: rolemap.get('733066904582881300').id,
                         deny: ['VIEW_CHANNEL'],
                      },
                    ], 'Needed to change permissions'); // change reasoning later
