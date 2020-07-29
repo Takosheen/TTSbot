@@ -8,15 +8,15 @@ client.once('ready', () => {
 client.login('NzI4NzExMDE2MTc0NTgzODA4.Xv-ZRA.WXUp-lzvg5lhbS-JuKPdaitBuag');
 
 client.on("channelCreate", (channel) => { //method looks for channel
-    
-    var message = new Discord.Message(client,null,channel);
-    
+
+    var message = new Discord.Message(client, null, channel);
+
     // extract text into a separate variable
-    message.channel.send('text').then(async (sentmessage)=>{ //text would be what to prompt user with
+    message.channel.send('text').then(async (sentmessage) => { //text would be what to prompt user with
         const filter = (reaction, user) => {
-            
+
             // set up emojis to be filtered for categories
-          return reaction.emoji.name === '🙂'
+            return reaction.emoji.name === '🙂'
         }
 
         //console.log(channel.members);
@@ -28,24 +28,31 @@ client.on("channelCreate", (channel) => { //method looks for channel
 
         collector.on('collect', async (reaction, user) => {
             // Possibly make this into a switch statement, maybe late
-            if(reaction.emoji.name === '🙂') {
-                let roles =  await message.guild.roles.fetch()
-                roles.cache.forEach(Role => console.log(Role.name + ' ' + Role.id));
-                const allowedRoles = ['TEST ROLE'];
-                const rolemap = roles.cache.filter(role => allowedRoles.includes(role.name))
-                console.log(rolemap.get('733066904582881300'))
+            switch (reaction.emoji.name) {
+                case '🙂':
+                    let roles = await message.guild.roles.fetch()
+                    roles.cache.forEach(Role => console.log(Role.name + ' ' + Role.id));
+                    const allowedRoles = ['TEST ROLE'];
+                    const rolemap = roles.cache.filter(role => allowedRoles.includes(role.name))
+                    console.log(rolemap.get('733066904582881300')) //replace for actual id of role
 
-                 await message.channel.overwritePermissions([
-                     {
-                        id: rolemap.get('733066904582881300').id,
-                        deny: ['VIEW_CHANNEL'],
-                     },
-                   ], 'Needed to change permissions'); // change reasoning later
+                    await message.channel.overwritePermissions([
+                        {
+                            id: rolemap.get('733066904582881300').id,
+                            deny: ['VIEW_CHANNEL'],
+                        },
+                    ], 'Changed permissions');
                     console.log('post-if statement')
+                    break;
+                default:
+                    console.log('No reaction');
+                    break;
             }
+
         })
         sentmessage.react('🙂'); // reaction to message for role
         //add emojis for other reactions
-    });
+    })
 });
+
 
