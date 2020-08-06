@@ -29,7 +29,7 @@ client.on("channelCreate", (channel) => { //method looks for channel
 
         collector.on('collect', async (reaction, user) => {
             // Possibly make this into a switch statement, maybe late
-            const
+
             switch (reaction.emoji.name) {
                 case '🙂':
                     let roles = await message.guild.roles.fetch()
