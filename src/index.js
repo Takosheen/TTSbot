@@ -10,9 +10,10 @@ client.login('NzI4NzExMDE2MTc0NTgzODA4.Xv-ZRA.WXUp-lzvg5lhbS-JuKPdaitBuag');
 client.on("channelCreate", (channel) => { //method looks for channel
 
     var message = new Discord.Message(client, null, channel);
-
     // extract text into a separate variable
-    message.channel.send('text').then(async (sentmessage) => { //text would be what to prompt user with
+
+    let text = 'Thank you for opening a ticket. Please react with ' 'so that the ticket is labeled as such.'
+    message.channel.send(text).then(async (sentmessage) => { //text would be what to prompt user with
         const filter = (reaction, user) => {
 
             // set up emojis to be filtered for categories
@@ -28,6 +29,7 @@ client.on("channelCreate", (channel) => { //method looks for channel
 
         collector.on('collect', async (reaction, user) => {
             // Possibly make this into a switch statement, maybe late
+            const
             switch (reaction.emoji.name) {
                 case '🙂':
                     let roles = await message.guild.roles.fetch()
@@ -38,7 +40,7 @@ client.on("channelCreate", (channel) => { //method looks for channel
 
                     await message.channel.overwritePermissions([
                         {
-                            id: rolemap.get('733066904582881300').id,
+                            // id: rolemap.get('733066904582881300').id,
                             deny: ['VIEW_CHANNEL'],
                         },
                     ], 'Changed permissions');
@@ -50,7 +52,14 @@ client.on("channelCreate", (channel) => { //method looks for channel
             }
 
         })
-        sentmessage.react('🙂'); // reaction to message for role
+        //Roles - Stats - 586678103762272257
+        //Production - 512431819400937496
+        sentmessage.react('🙂');
+        const valorant = message.guild.emojis.cache.find(emoji => emoji.name === 'valorant');
+        const siege = message.guild.emojis.cache.find(emoji => emoji.name === 'siege');
+        sentmessage.react(valorant);
+        sentmessage.react(siege)
+        // reaction to message for role
         //add emojis for other reactions
     })
 });
