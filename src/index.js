@@ -12,7 +12,7 @@ client.on("channelCreate", (channel) => { //method looks for channel
     var message = new Discord.Message(client, null, channel);
     // extract text into a separate variable
 
-    let text = 'Thank you for opening a ticket. Please react with ' 'so that the ticket is labeled as such.'
+    let text = 'sample text'
     message.channel.send(text).then(async (sentmessage) => { //text would be what to prompt user with
         const filter = (reaction, user) => {
 
@@ -28,19 +28,33 @@ client.on("channelCreate", (channel) => { //method looks for channel
         // console.log(myRole);
 
         collector.on('collect', async (reaction, user) => {
-            // Possibly make this into a switch statement, maybe late
 
             switch (reaction.emoji.name) {
-                case '🙂':
+                case '1️⃣':
                     let roles = await message.guild.roles.fetch()
                     roles.cache.forEach(Role => console.log(Role.name + ' ' + Role.id));
-                    const allowedRoles = ['TEST ROLE'];
+                    const allowedRoles = ['fuckrole'];
                     const rolemap = roles.cache.filter(role => allowedRoles.includes(role.name))
-                    console.log(rolemap.get('733066904582881300')) //replace for actual id of role
+                    console.log(rolemap.get('741406472101036094')) //replace for actual id of role
 
                     await message.channel.overwritePermissions([
                         {
-                            // id: rolemap.get('733066904582881300').id,
+                            id: rolemap.get('741406472101036094').id,
+                            deny: ['VIEW_CHANNEL'],
+                        },
+                    ], 'Changed permissions');
+                    console.log('post-if statement')
+                    break;
+                case '2️⃣':
+                    let roles = await message.guild.roles.fetch()
+                    roles.cache.forEach(Role => console.log(Role.name + ' ' + Role.id));
+                    const allowedRoles = ['fuckrole'];
+                    const rolemap = roles.cache.filter(role => allowedRoles.includes(role.name))
+                    console.log(rolemap.get('741406472101036094')) //replace for actual id of role
+
+                    await message.channel.overwritePermissions([
+                        {
+                            id: rolemap.get('741406472101036094').id,
                             deny: ['VIEW_CHANNEL'],
                         },
                     ], 'Changed permissions');
@@ -54,11 +68,15 @@ client.on("channelCreate", (channel) => { //method looks for channel
         })
         //Roles - Stats - 586678103762272257
         //Production - 512431819400937496
-        sentmessage.react('🙂');
+        //add :notepad_spiral: for general inquiry -- done
         const valorant = message.guild.emojis.cache.find(emoji => emoji.name === 'valorant');
         const siege = message.guild.emojis.cache.find(emoji => emoji.name === 'siege');
+
+        sentmessage.react('1️⃣');
+        sentmessage.react('2️⃣')
+        sentmessage.react('🗒️');
         sentmessage.react(valorant);
-        sentmessage.react(siege)
+        sentmessage.react(siege);
         // reaction to message for role
         //add emojis for other reactions
     })
