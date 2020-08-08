@@ -5,7 +5,7 @@ client.once('ready', () => {
     console.log('Ready!');
 });
 
-client.login(process.env.NzI4NzExMDE2MTc0NTgzODA4.Xv - ZRA.WXUp - lzvg5lhbS - JuKPdaitBuag);
+client.login(process.env.3BnTZ1OG7FJh1huW0_3gIb - KCnX1iFaN);
 
 client.on("channelCreate", (channel) => { //method looks for channel
 
