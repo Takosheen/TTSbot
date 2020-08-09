@@ -27,9 +27,6 @@ client.on("channelCreate", (channel) => { //method looks for channel
 
             return reaction.emoji.name === '1️⃣' || '2️⃣'; // change these emojis if needed
         }
-        if (message.content === '!valcount') {
-            message.channel.send(valcount)
-        }
         //console.log(channel.members);
 
         var collector = sentmessage.createReactionCollector(filter)
@@ -75,6 +72,9 @@ client.on("channelCreate", (channel) => { //method looks for channel
         //Production - 512431819400937496
         //add :notepad_spiral: for general inquiry -- done
 
+        if (message.content === '!valcount') {
+            message.channel.send(valcount)
+        }
         sentmessage.react('1️⃣');
         sentmessage.react('2️⃣')
         sentmessage.react('🗒️');
