@@ -1,12 +1,11 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
+require('dotenv').config();
 client.once('ready', () => {
     console.log('Ready!');
 });
-// const BOT_TOKEN = process.env.NzI4NzExMDE2MTc0NTgzODA4.Xv-XBQ.htqz-yjPSNJRVsFfN0BezWzCNfw;
 
-client.login('NzI4NzExMDE2MTc0NTgzODA4.Xv-XBQ.htqz-yjPSNJRVsFfN0BezWzCNfw');
+client.login(process.env.BOT_TOKEN);
 
 client.on("channelCreate", (channel) => { //method looks for channel
 
