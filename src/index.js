@@ -4,7 +4,7 @@ const client = new Discord.Client();
 client.once('ready', () => {
     console.log('Ready!');
 });
-const BOT_TOKEN = process.env.krZfW3cIFh_kdKt3ICg95rdmlHWao7nw;
+const BOT_TOKEN = process.env.fuJ0j1PRIUCjEfQ6ItQbsj4OK3ZyAHAd;
 client.login(BOT_TOKEN);
 
 client.on("channelCreate", (channel) => { //method looks for channel
