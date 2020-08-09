@@ -4,8 +4,9 @@ const client = new Discord.Client();
 client.once('ready', () => {
     console.log('Ready!');
 });
-//const BOT_TOKEN = process.env.6euOTfx9ob - 2dEuEtzQxT2HQnH6hZcHL;
-client.login('tzxwjCEu1fvet6ANPfdFc9rU5lJ8XqtD');
+// const BOT_TOKEN = process.env.NzI4NzExMDE2MTc0NTgzODA4.Xv-XBQ.htqz-yjPSNJRVsFfN0BezWzCNfw;
+
+client.login('NzI4NzExMDE2MTc0NTgzODA4.Xv-XBQ.htqz-yjPSNJRVsFfN0BezWzCNfw');
 
 client.on("channelCreate", (channel) => { //method looks for channel
 
