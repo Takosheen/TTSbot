@@ -11,6 +11,7 @@ client.on("channelCreate", (channel) => { //method looks for channel
 
     var message = new Discord.Message(client, null, channel);
     // extract text into a separate variable
+    let valcount, siegecount, generalinq = 0;
 
     const valorant = message.guild.emojis.cache.find(emoji => emoji.name === 'valorant');
     const siege = message.guild.emojis.cache.find(emoji => emoji.name === 'siege');
@@ -20,10 +21,15 @@ client.on("channelCreate", (channel) => { //method looks for channel
         const filter = (reaction, user) => {
 
             // set up emojis to be filtered for categories
+            if (reaction.emoji.name === valorant); {
+                valcount++;
+            }
 
             return reaction.emoji.name === '1️⃣' || '2️⃣'; // change these emojis if needed
         }
-
+        if (message.content === '!valcount') {
+            message.channel.send(valcount)
+        }
         //console.log(channel.members);
 
         var collector = sentmessage.createReactionCollector(filter)
@@ -64,6 +70,7 @@ client.on("channelCreate", (channel) => { //method looks for channel
             }
 
         })
+
         //Roles - Stats - 586678103762272257
         //Production - 512431819400937496
         //add :notepad_spiral: for general inquiry -- done
