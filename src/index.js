@@ -13,7 +13,10 @@ client.on("channelCreate", (channel) => { //method looks for channel
     var message = new Discord.Message(client, null, channel);
     // extract text into a separate variable
 
-    let text = 'sample text'
+    const valorant = message.guild.emojis.cache.find(emoji => emoji.name === 'valorant');
+    const siege = message.guild.emojis.cache.find(emoji => emoji.name === 'siege');
+
+    let text = 'Welcome to CEA ticket support. \n \n \nPlease select the most appropriate category regarding your inquiry by reacting to this message. \n🗒️: General \n<:valorant:741007650262745139>: Valorant \n<:siege:741007641895239742>: Siege';
     message.channel.send(text).then(async (sentmessage) => { //text would be what to prompt user with
         const filter = (reaction, user) => {
 
@@ -70,8 +73,6 @@ client.on("channelCreate", (channel) => { //method looks for channel
         //Roles - Stats - 586678103762272257
         //Production - 512431819400937496
         //add :notepad_spiral: for general inquiry -- done
-        const valorant = message.guild.emojis.cache.find(emoji => emoji.name === 'valorant');
-        const siege = message.guild.emojis.cache.find(emoji => emoji.name === 'siege');
 
         sentmessage.react('1️⃣');
         sentmessage.react('2️⃣')
