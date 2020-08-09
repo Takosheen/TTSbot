@@ -5,7 +5,7 @@ client.once('ready', () => {
     console.log('Ready!');
 });
 //const BOT_TOKEN = process.env.6euOTfx9ob - 2dEuEtzQxT2HQnH6hZcHL;
-client.login('6euOTfx9ob-2dEuEtzQxT2HQnH6hZcHL');
+client.login('tzxwjCEu1fvet6ANPfdFc9rU5lJ8XqtD');
 
 client.on("channelCreate", (channel) => { //method looks for channel
 
