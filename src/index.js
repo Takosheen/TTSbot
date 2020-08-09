@@ -21,7 +21,8 @@ client.on("channelCreate", (channel) => { //method looks for channel
         const filter = (reaction, user) => {
 
             // set up emojis to be filtered for categories
-            return reaction.emoji.name === '1️⃣' // change these emojis if needed
+
+            return reaction.emoji.name === '1️⃣' || '2️⃣'; // change these emojis if needed
         }
 
         //console.log(channel.members);
@@ -32,15 +33,13 @@ client.on("channelCreate", (channel) => { //method looks for channel
         // console.log(myRole);
 
         collector.on('collect', async (reaction, user) => {
-
+            let roles = await message.guild.roles.fetch()
+            const allowedRoles = ['fuckrole', 'fuckrole2'];
+            const rolemap = roles.cache.filter(role => allowedRoles.includes(role.name))
             switch (reaction.emoji.name) {
                 case '1️⃣':
-                    let roles = await message.guild.roles.fetch()
                     roles.cache.forEach(Role => console.log(Role.name + ' ' + Role.id));
-                    const allowedRoles = ['fuckrole'];
-                    const rolemap = roles.cache.filter(role => allowedRoles.includes(role.name))
                     console.log(rolemap.get('741406472101036094')) //replace for actual id of role
-
                     await message.channel.overwritePermissions([
                         {
                             id: rolemap.get('741406472101036094').id, //replace for actual id of role
@@ -49,21 +48,17 @@ client.on("channelCreate", (channel) => { //method looks for channel
                     ], 'Changed permissions');
                     console.log('post-if statement')
                     break;
-                /* case '2️⃣':
-                     let roles = await message.guild.roles.fetch()
-                     roles.cache.forEach(Role => console.log(Role.name + ' ' + Role.id));
-                     const allowedRoles = ['fuckrole'];
-                     const rolemap = roles.cache.filter(role => allowedRoles.includes(role.name))
-                     console.log(rolemap.get('741406472101036094')) //replace for actual id of role
- 
-                     await message.channel.overwritePermissions([
-                         {
-                             id: rolemap.get('741406472101036094').id, //replace for actual id of role
-                             deny: ['VIEW_CHANNEL'],
-                         },
-                     ], 'Changed permissions');
-                     console.log('post-if statement')
-                     break;*/
+                case '2️⃣':
+                    roles.cache.forEach(Role => console.log(Role.name + ' ' + Role.id));
+                    console.log(rolemap.get('741925856917848084')) //replace for actual id of role
+                    await message.channel.overwritePermissions([
+                        {
+                            id: rolemap.get('741925856917848084').id, //replace for actual id of role
+                            deny: ['VIEW_CHANNEL'],
+                        },
+                    ], 'Changed permissions');
+                    console.log('post-if statement')
+                    break;
                 default:
                     console.log('No reaction');
                     break;
