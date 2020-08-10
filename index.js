@@ -9,10 +9,12 @@ client.once('ready', () => {
 client.login(process.env.BOT_TOKEN);
 
 client.on("channelCreate", (channel) => {
-    var ping = true;
+    r.overwritePermissions(everyoneRole, { VIEW_CHANNEL: false });
+
+    var ping = true; //time delay
     if (ping) {
         ping = false;
-        setTimeout(() => { ping = true }, 1000)
+        setTimeout(() => { ping = true }, 5000)
     }
 
     var message = new Discord.Message(client, null, channel);
@@ -74,7 +76,7 @@ client.on("channelCreate", (channel) => {
         // 586678103762272257 - stat
 
         // THESE REACTIONS DO NOT SERVE ANY PURPOSE BESIDES IDENTIFICATION
-        sentmessage.react('1️⃣');
+        sentmessage.react('1️⃣');//:regional_indicator_g: :regional_indicator_v: :regional_indicator_s:
         sentmessage.react('2️⃣');
         sentmessage.react('3️⃣');
 
