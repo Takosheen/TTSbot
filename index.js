@@ -33,7 +33,8 @@ client.on("channelCreate", (channel) => {
                     await message.channel.overwritePermissions([
                         {
                             id: rolemap.get('586678103762272257').id,
-                            id: rolemap.get('509808982991568906'), //REMOVE SIEGE ADMINS
+                            deny: ['VIEW_CHANNEL'],
+                            id: rolemap.get('509808982991568906').id, //REMOVE SIEGE ADMINS
                             deny: ['VIEW_CHANNEL'],
                         },
                     ], 'Changed permissions');
@@ -45,7 +46,8 @@ client.on("channelCreate", (channel) => {
                     await message.channel.overwritePermissions([
                         {
                             id: rolemap.get('586678103762272257').id,
-                            id: rolemap.get('741457872176676875'), //REMOVE VAL ADMINS
+                            deny: ['VIEW_CHANNEL'],
+                            id: rolemap.get('741457872176676875').id, //REMOVE VAL ADMINS
                             deny: ['VIEW_CHANNEL'],
                         },
                     ], 'Changed permissions');
