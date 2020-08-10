@@ -11,10 +11,10 @@ client.login(process.env.BOT_TOKEN);
 client.on("channelCreate", (channel) => {
 
     var message = new Discord.Message(client, null, channel);
-    const valorant = message.guild.emojis.cache.find(emoji => emoji.name === 'valorant');
-    const siege = message.guild.emojis.cache.find(emoji => emoji.name === 'siege');
+    const valorant = message.guild.emojis.cache.find(emoji => emoji.name === 'Valorant');
+    const siege = message.guild.emojis.cache.find(emoji => emoji.name === 'Siege');
 
-    let text = 'Welcome to CEA ticket support. \n \n \nPlease select the most appropriate category regarding your inquiry by reacting to this message. \n🗒️: General \n<:valorant:741007650262745139>: Valorant \n<:siege:741007641895239742>: Siege';
+    let text = 'Welcome to CEA ticket support. \n \n \nPlease select the most appropriate category regarding your inquiry by reacting to this message. \n🗒️: General \n<:Valorant:742176274163695726>: Valorant \n<:Siege:742176288323928106>: Siege';
     message.channel.send(text).then(async (sentmessage) => {
         const filter = (reaction, user) => {
             return reaction.emoji.name === '1️⃣' || '2️⃣';
