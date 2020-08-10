@@ -17,33 +17,35 @@ client.on("channelCreate", (channel) => {
     let text = 'Welcome to CEA ticket support. \n \n \nPlease select the most appropriate category regarding your inquiry by reacting to this message. \n🗒️: General \n<:Valorant:742176274163695726>: Valorant \n<:Siege:742176288323928106>: Siege';
     message.channel.send(text).then(async (sentmessage) => {
         const filter = (reaction, user) => {
-            return reaction.emoji.name === '1️⃣' || '2️⃣';
+            return reaction.emoji.name === valorant || siege;
         }
 
         var collector = sentmessage.createReactionCollector(filter)
 
         collector.on('collect', async (reaction, user) => {
             let roles = await message.guild.roles.fetch()
-            const allowedRoles = ['Statistics', 'Production'];
+            const allowedRoles = ['Statistics', 'Rainbow Six League Admin', '? League Admin'];
             const rolemap = roles.cache.filter(role => allowedRoles.includes(role.name))
             switch (reaction.emoji.name) {
-                case '1️⃣': //STATISTICS
+                case valorant: //VALORANT
                     roles.cache.forEach(Role => console.log(Role.name + ' ' + Role.id));
                     console.log(rolemap.get('586678103762272257'))
                     await message.channel.overwritePermissions([
                         {
                             id: rolemap.get('586678103762272257').id,
+                            id: rolemap.get('509808982991568906'), //REMOVE SIEGE ADMINS
                             deny: ['VIEW_CHANNEL'],
                         },
                     ], 'Changed permissions');
                     console.log('post-if statement')
                     break;
-                case '2️⃣': //PRODUCTION
+                case siege: //SIEGE
                     roles.cache.forEach(Role => console.log(Role.name + ' ' + Role.id));
-                    console.log(rolemap.get('512431819400937496'))
+                    console.log(rolemap.get('586678103762272257'))
                     await message.channel.overwritePermissions([
                         {
-                            id: rolemap.get('512431819400937496').id,
+                            id: rolemap.get('586678103762272257').id,
+                            id: rolemap.get('741457872176676875'), //REMOVE VAL ADMINS
                             deny: ['VIEW_CHANNEL'],
                         },
                     ], 'Changed permissions');
@@ -55,9 +57,10 @@ client.on("channelCreate", (channel) => {
             }
 
         })
-
-        sentmessage.react('1️⃣');
-        sentmessage.react('2️⃣');
+        //general inquiry = stats stays
+        //509808982991568906 - siege admin
+        // 741457872176676875 - val admin
+        // 586678103762272257 - stat
 
         // THESE REACTIONS DO NOT SERVE ANY PURPOSE BESIDES IDENTIFICATION
         sentmessage.react('🗒️');
