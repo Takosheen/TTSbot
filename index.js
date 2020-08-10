@@ -6,7 +6,7 @@ client.once('ready', () => {
 });
 //This branch is specifically for CEA and is the LIVE build.
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.TEST_TOKEN);
 
 client.on("channelCreate", (channel) => {
 
