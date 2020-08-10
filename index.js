@@ -5,7 +5,7 @@ client.once('ready', () => {
     console.log('Ready!');
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.TEST_TOKEN);
 
 client.on("channelCreate", (channel) => { //method looks for channel
 
