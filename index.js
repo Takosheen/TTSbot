@@ -32,9 +32,9 @@ client.on("channelCreate", (channel) => {
                     console.log(rolemap.get('586678103762272257'))
                     await message.channel.overwritePermissions([
                         {
-                            id: rolemap.get('586678103762272257').id,
+                            id: rolemap.get('741406472101036094').id,
                             deny: ['VIEW_CHANNEL'],
-                            id: rolemap.get('509808982991568906').id, //REMOVE SIEGE ADMINS
+                            id: rolemap.get('741925856917848084').id, //REMOVE SIEGE ADMINS
                             deny: ['VIEW_CHANNEL'],
                         },
                     ], 'Changed permissions');
