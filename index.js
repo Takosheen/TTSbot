@@ -9,6 +9,11 @@ client.once('ready', () => {
 client.login(process.env.BOT_TOKEN);
 
 client.on("channelCreate", (channel) => {
+    var ping = true;
+    if (ping) {
+        ping = false;
+        setTimeout(() => { ping = true }, 1000)
+    }
 
     var message = new Discord.Message(client, null, channel);
     const valorant = message.guild.emojis.cache.find(emoji => emoji.name === 'Valorant');
