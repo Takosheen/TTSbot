@@ -9,7 +9,7 @@ client.once('ready', () => {
 client.login(process.env.BOT_TOKEN);
 
 client.on("channelCreate", (channel) => {
-    r.overwritePermissions(everyoneRole, { VIEW_CHANNEL: false });
+    message.channel.overwritePermissions(everyoneRole, { VIEW_CHANNEL: false });
 
     var ping = true; //time delay
     if (ping) {
@@ -21,7 +21,7 @@ client.on("channelCreate", (channel) => {
     const valorant = message.guild.emojis.cache.find(emoji => emoji.name === 'Valorant');
     const siege = message.guild.emojis.cache.find(emoji => emoji.name === 'Siege');
 
-    let text = 'Welcome to CEA ticket support. \n \n \nPlease select the most appropriate category regarding your inquiry by reacting to this message. \n1️⃣: General \n2️⃣: Valorant \n3️⃣: Siege';
+    let text = 'Welcome to CEA ticket support. \n\n\nPlease select the most appropriate category regarding your inquiry by reacting to this message. \n1️⃣: General \n2️⃣: Valorant \n3️⃣: Siege';
     message.channel.send(text).then(async (sentmessage) => {
         const filter = (reaction, user) => {
             return reaction.emoji.name === '2️⃣' || '3️⃣';
