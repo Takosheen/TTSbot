@@ -9,7 +9,7 @@ client.once('ready', () => {
 client.login(process.env.BOT_TOKEN);
 
 client.on("channelCreate", (channel) => {
-    message.channel.overwritePermissions(everyoneRole, { VIEW_CHANNEL: false });
+
 
     var ping = true; //time delay
     if (ping) {
